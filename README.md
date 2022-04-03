@@ -1,12 +1,12 @@
 # Cline Backend
 
 ## Description
-Clineのバックエンド
+~~Clineのバックエンド~~
 
 ## Environment
 |言語、フレームワークなど|バージョン|
 |:---:|:---:|
-Ruby| 2.7.4
+Ruby| 2.7.5
 Rails| 6.1.3
 MySQL| 8.0.22
 
@@ -24,6 +24,11 @@ docker compose run --rm web rails db:create
 3. コンテナの立ち上げ
 ```
 docker compose up -d
+```
+
+4. tailwindcssの起動
+```
+docker compose exec web bundle exec rails tailwindcss:watch
 ```
 
 ## Usages
