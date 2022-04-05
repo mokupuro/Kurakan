@@ -1,0 +1,7 @@
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %> border-t-4 rounded-b px-4 py-3 shadow-md" role="alert">
+    <%= flash_status(key) %>
+    <p class="text-sm"><%= value %></p>
+  </div>
+<% end %>
+
