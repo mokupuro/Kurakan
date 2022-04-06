@@ -37,6 +37,7 @@ group :development, :test do
   gem "bullet"
   gem 'rails-controller-testing'
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do
