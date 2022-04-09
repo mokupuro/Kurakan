@@ -19,6 +19,11 @@
   resolved "https://registry.npmjs.org/@rails/ujs/-/ujs-6.1.3.tgz"
   integrity sha512-9mip5o+LVouWAqLMNJWhxda+D5uP+4RziNECgOGJlL6k3rc5SC/ljCHpV9Cym4i3oeGZkpZJ2tu4frCwt84kzQ==
 
+"@tailwindcss/line-clamp@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/line-clamp/-/line-clamp-0.3.1.tgz#4d8441b509b87ece84e94f28a4aa9998413ab849"
+  integrity sha512-pNr0T8LAc3TUx/gxCfQZRe9NB2dPEo/cedPHzUGIPxqDMhgjwNm6jYxww4W5l0zAsAddxr+XfZcqttGiFDgrGg==
+
 "@techtrain/cli-railway@^0.1.0-alpha.9":
   version "0.1.0-alpha.9"
   resolved "https://registry.npmjs.org/@techtrain/cli-railway/-/cli-railway-0.1.0-alpha.9.tgz"
