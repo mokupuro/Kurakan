@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_11_042226) do
+ActiveRecord::Schema.define(version: 2022_04_12_153226) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,16 @@ ActiveRecord::Schema.define(version: 2022_04_11_042226) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_infos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", default: ""
+    t.string "twitter_id", default: ""
+    t.string "instagram_id", default: ""
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_infos_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -99,4 +109,5 @@ ActiveRecord::Schema.define(version: 2022_04_11_042226) do
   add_foreign_key "circle_images", "circles"
   add_foreign_key "circle_images", "images"
   add_foreign_key "circle_times", "circles"
+  add_foreign_key "user_infos", "users"
 end
