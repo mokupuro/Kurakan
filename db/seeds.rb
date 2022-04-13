@@ -8,5 +8,7 @@ require "factory_bot_rails"
 include FactoryBot::Syntax::Methods
 
 Circle.destroy_all
+User.destroy_all
 
 create(:circle)
+create(:user)
