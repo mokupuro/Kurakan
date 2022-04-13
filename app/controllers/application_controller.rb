@@ -10,8 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    # 遷移させたいページのパス
-    pages_show_path
+    user_path(current_user)
   end
 
   private
@@ -38,4 +37,8 @@ class ApplicationController < ActionController::Base
     def sign_in_required
       redirect_to new_user_session_url unless user_signed_in?
     end 
+
+    def current_user?(user)
+      user && user == current_user
+    end
 end
