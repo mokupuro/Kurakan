@@ -1,8 +1,8 @@
 <section class="text-gray-600 body-font overflow-hidden">
   <div class="w-full mt-6 lg:mt-0 lg:pl-10 lg:py-6">
     <div class="flex max-w-xs">
-      <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 mr-1 truncate"><%= @user ? @user.name : '名無し' %></h1>
-      <% if current_user == @user.user %>
+      <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 mr-1 truncate"><%= @user.name.present? ? @user.name : '名無し' %></h1>
+      <% if current_user == @user %>
         <%= link_to edit_user_path do %>
           <svg class="h-6 w-6 text-black" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z"/>
