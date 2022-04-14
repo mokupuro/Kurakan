@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_13_153237) do
+ActiveRecord::Schema.define(version: 2022_04_13_203231) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -42,10 +42,11 @@ ActiveRecord::Schema.define(version: 2022_04_13_153237) do
 
   create_table "circle_days", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "circle_id", null: false
-    t.integer "active_day", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "day_of_week_id", null: false
     t.index ["circle_id"], name: "index_circle_days_on_circle_id"
+    t.index ["day_of_week_id"], name: "index_circle_days_on_day_of_week_id"
   end
 
   create_table "circle_images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -76,6 +77,12 @@ ActiveRecord::Schema.define(version: 2022_04_13_153237) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "day_of_weeks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "day_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -99,6 +106,7 @@ ActiveRecord::Schema.define(version: 2022_04_13_153237) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "circle_days", "circles"
+  add_foreign_key "circle_days", "day_of_weeks"
   add_foreign_key "circle_images", "circles"
   add_foreign_key "circle_images", "images"
   add_foreign_key "circle_times", "circles"

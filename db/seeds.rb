@@ -10,5 +10,9 @@ include FactoryBot::Syntax::Methods
 Circle.destroy_all
 User.destroy_all
 
+%w[月 火 水 木 金 土 日].each do |day_of_week|
+  DayOfWeek.create!(day_name: day_of_week)
+end
+
 create(:circle)
 create(:user)
