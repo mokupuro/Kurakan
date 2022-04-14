@@ -26,3 +26,6 @@ dbuild:
 .PHONY: test
 test:
 	$(DOCKER_COMPOSE_EXEC) web bundle exec rspec spec
+
+migrate:
+	$(DOCKER_COMPOSE_EXEC) web rails db:migrate
