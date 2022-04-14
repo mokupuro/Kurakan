@@ -1,0 +1,31 @@
+<section class="text-gray-600 body-font w-full bg-gray-100 rounded-lg p-8 md:w-3/5 lg:w-2/5 mx-auto">
+  <h2 class="text-gray-900 text-lg font-medium title-font mb-5">サインアップ</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'flex flex-col md:ml-auto w-full mt-10 md:mt-0' }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field mb-4">
+      <%= f.label :email, { class: 'leading-7 text-sm text-gray-600' } %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+    </div>
+
+    <div class="field mb-4">
+      <%= f.label :password, { class: 'leading-7 text-sm text-gray-600' } %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+    </div>
+
+    <div class="field mb-4">
+      <%= f.label :password_confirmation, { class: 'leading-7 text-sm text-gray-600' } %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+    </div>
+
+    <div class="actions mb-4">
+      <%= f.submit "登録", { class: 'w-full text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' }%>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</section>

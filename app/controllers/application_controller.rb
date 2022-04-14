@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError, params[:path]
   end
 
+  def after_sign_in_path_for(resource)
+    # 遷移させたいページのパス
+    pages_show_path
+  end
+
   private
     def _render_404(e = nil)
       logger.info "Rendering 404 with excaption: #{e.message}" if e
@@ -29,4 +34,8 @@ class ApplicationController < ActionController::Base
         render template: 'errors/500.html', status: 404, layout: 'application', content_type: 'text/html'
       end
     end
+
+    def sign_in_required
+      redirect_to new_user_session_url unless user_signed_in?
+    end 
 end
