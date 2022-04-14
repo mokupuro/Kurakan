@@ -13,6 +13,12 @@ initial: ## 初期セットアップ
 dup:
 	$(DOCKER_COMPOSE) up -d
 
+ddown:
+	$(DOCKER_COMPOSE) down
+
+drestart:
+	$(DOCKER_COMPOSE) restart
+
 dbuild:
 	$(DOCKER_COMPOSE) build --no-cache --force-rm
 
