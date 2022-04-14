@@ -1,6 +1,8 @@
-<section class="text-gray-600 body-font overflow-hidden ">
-  <div class="lg:w-4/5 mx-auto flex flex-wrap items-center">
-    <%=  image_tag @circle.image.display_image, class: "lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" if @circle.image.image.attached? %> 
+<section class="container text-gray-600 body-font overflow-hidden">
+  <div class="mx-auto flex flex-wrap items-center">
+    <div class="lg:w-1/2 w-full h-64 lg:h-full rounded-xl <%= 'lg:h-96 bg-gray-200 animate-pulse' if !@circle.image&.image&.attached? %>">
+      <%= image_tag @circle.image&.display_image, class: "w-full h-64 md:h-full max-h-96 rounded-xl object-cover object-center rounded" if @circle.image&.image&.attached? %> 
+    </div>
     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
       <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @circle.name %></h1>
       <div class="flex mb-4 mt-2">
@@ -21,14 +23,14 @@
       <div class="flex border-t border-gray-200 py-2 justify-between">
         <span class="text-gray-500">活動日</span>
         <div>
-          <% ['月', '火', '水', '木', '金', '土', '日'].each_with_index do |day_of_week, i| %>
-            <span class="ml-1 text-gray-900 <%= 'py-1.5 px-2 rounded-full bg-blue-200 items-center justify-center' if @circle.active_days.include?(i) %>"><%= day_of_week %></span>
+          <% @day_of_weeks.each_with_index do |day_of_week, i| %>
+            <span class="ml-1 text-gray-900 <%= 'py-1.5 px-2 rounded-full bg-blue-200 items-center justify-center' if @circle.day_of_weeks&.include?(day_of_week) %>"><%= day_of_week.day_name %></span>
           <% end %>
         </div>
       </div>
       <div class="flex border-t border-gray-200 py-2">
         <span class="text-gray-500">活動時間</span>
-        <span class="ml-auto text-gray-900"><%= @circle.circle_time.display_start_time %> ~ <%= @circle.circle_time.display_start_time %></span>
+        <span class="ml-auto text-gray-900"><%= @circle.circle_time&.display_start_time %> ~ <%= @circle.circle_time&.display_end_time %></span>
       </div>
       <div class="flex border-t border-gray-200 py-2">
         <span class="text-gray-500">人数</span>
