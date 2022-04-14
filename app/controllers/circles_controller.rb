@@ -19,6 +19,7 @@ class CirclesController < ApplicationController
 
   def create
     @circle = Circle.new(circle_params)
+    @circle.build_circle_image.build_image.image.attach(params[:circle][:image])
     if @circle.save
       flash[:success] = "作成しました"
       redirect_to @circle
@@ -30,6 +31,8 @@ class CirclesController < ApplicationController
 
 
   def update
+    @circle.circle_image&.destroy if @circle.circle_image.present?
+    @circle.build_circle_image.build_image.image.attach(params[:circle][:image])
     if @circle.update(circle_params)
       flash[:success] = "更新しました"
       redirect_to @circle
