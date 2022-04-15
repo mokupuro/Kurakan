@@ -6,4 +6,8 @@ class Circle < ApplicationRecord
 
   has_many :circle_days, dependent: :destroy
   has_many :day_of_weeks, through: :circle_days
+
+  def upload_image(image)
+    build_circle_image.build_image.image.attach(image)
+  end
 end
