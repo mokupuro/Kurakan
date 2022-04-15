@@ -1,5 +1,6 @@
 class CirclesController < ApplicationController
   before_action :set_circle, only: %i[ show edit update destroy ]
+  before_action :set_day_of_weeks, only: %i[ show edit new ]
 
   def index
     @circles = Circle.all
@@ -11,7 +12,6 @@ class CirclesController < ApplicationController
   def new
     @circle = Circle.new
     @circle.build_circle_time
-    @day_of_weeks = DayOfWeek.all
   end
 
   def edit
@@ -45,6 +45,9 @@ class CirclesController < ApplicationController
   private
     def set_circle
       @circle = Circle.find(params[:id])
+    end
+
+    def set_day_of_weeks
       @day_of_weeks = DayOfWeek.all
     end
 
