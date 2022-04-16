@@ -30,7 +30,7 @@
       </div>
       <div class="flex border-t border-gray-200 py-2">
         <span class="text-gray-500">活動時間</span>
-        <span class="ml-auto text-gray-900"><%= @circle.circle_time&.display_start_time %> ~ <%= @circle.circle_time&.display_end_time %></span>
+        <span class="ml-auto text-gray-900"><%= display_time(@circle.circle_time&.active_start_time) %> ~ <%= display_time(@circle.circle_time&.active_end_time) %></span>
       </div>
       <div class="flex border-t border-gray-200 py-2">
         <span class="text-gray-500">人数</span>
