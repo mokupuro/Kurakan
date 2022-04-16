@@ -12,8 +12,9 @@
           <p class="leading-relaxed mb-5 line-clamp-2"><%= circle.description %></p>
         </div>
       </div>
-      <div class="mt-auto flex gap-3">
+      <div class="mt-auto flex gap-3 items-center justify-between">
         <%= render 'like_button', { circle: circle } %> 
+        <%= link_to 'more >', circle, { class: "text-blue-600 text-lg"} %>
       </div>
     </div>
   </div>
