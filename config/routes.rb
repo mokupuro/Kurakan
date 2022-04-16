@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'pages#index'
+  get "circles/:id/favorites" => "circles#favorites"
 
   resources :circles do
     resources :favorites, only: [:create, :destroy]

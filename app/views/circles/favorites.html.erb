@@ -1,0 +1,11 @@
+<section class="container text-gray-600 body-font overflow-hidden">
+  <div class="mx-auto flex flex-wrap items-center justify-center">
+    <% if @circle.favorites.any? %>
+      <ol class="flex flex-col space-y-3 w-full md:w-1/2">
+        <% @favorites.each do |favorite|%>
+          <%= render 'favorites/favorite_user', { favorite: favorite } %>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
+</section>
