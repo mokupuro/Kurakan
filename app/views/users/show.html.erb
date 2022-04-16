@@ -27,5 +27,12 @@
         </svg>
       </a>
     </div>
+    <% if @user.favorites.any? %>
+      <ol class="flex flex-col space-y-3 w-full">
+        <% @favorites.each do |favorite|%>
+          <%= render 'favorites/favorite_circle', { favorite: favorite } %>
+        <% end %>
+      </ol>
+    <% end %>
   </div>
 </section>

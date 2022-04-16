@@ -1,0 +1,8 @@
+<li id="favorites-<%= favorite.id %>">
+  <%= link_to circle_path(favorite.circle) do %>
+    <div class="bg-white p-4 rounded-2xl border flex flex-row items-center justify-between">
+      <%= link_to favorite.circle.name, favorite.circle, { class: "text-gray-900 text-lg title-font font-medium truncate mx-2" } %>
+      <%= render 'favorites/like_button', { circle: favorite.circle } %> 
+    </div>
+  <% end %>
+</li>
