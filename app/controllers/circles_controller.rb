@@ -1,5 +1,6 @@
 class CirclesController < ApplicationController
   before_action :set_circle, only: %i[ show edit update destroy favorites ]
+  before_action :set_day_of_weeks, only: %i[ show edit new ]
 
   def index
     @circles = Circle.all
@@ -11,7 +12,6 @@ class CirclesController < ApplicationController
   def new
     @circle = Circle.new
     @circle.build_circle_time
-    @day_of_weeks = DayOfWeek.all
   end
 
   def edit
@@ -23,7 +23,7 @@ class CirclesController < ApplicationController
 
   def create
     @circle = Circle.new(circle_params)
-    @circle.build_circle_image.build_image.image.attach(params[:circle][:image])
+    @circle.upload_image(params[:circle][:image])
     if @circle.save
       flash[:success] = "作成しました"
       redirect_to @circle
@@ -35,8 +35,7 @@ class CirclesController < ApplicationController
 
 
   def update
-    @circle.circle_image&.destroy if @circle.circle_image.present?
-    @circle.build_circle_image.build_image.image.attach(params[:circle][:image])
+    @circle.upload_image(params[:circle][:image])
     if @circle.update(circle_params)
       flash[:success] = "更新しました"
       redirect_to @circle
@@ -49,6 +48,9 @@ class CirclesController < ApplicationController
   private
     def set_circle
       @circle = Circle.find(params[:id])
+    end
+
+    def set_day_of_weeks
       @day_of_weeks = DayOfWeek.all
     end
 
