@@ -6,7 +6,7 @@
     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
       <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @circle.name %></h1>
       <div class="flex mb-4 mt-2">
-        <%= render 'like_button', { circle: @circle } %> 
+        <%= render 'favorites/favorite_button', { circle: @circle } %> 
       </div>
       <p class="leading-relaxed mb-5"><%= @circle.description %></p>
       <div class="flex border-t border-gray-200 py-2">
