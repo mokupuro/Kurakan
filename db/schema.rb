@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_17_070441) do
+ActiveRecord::Schema.define(version: 2022_04_17_132142) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2022_04_17_070441) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "circle_accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "circle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["circle_id"], name: "index_circle_accounts_on_circle_id"
+    t.index ["user_id"], name: "index_circle_accounts_on_user_id"
   end
 
   create_table "circle_days", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -127,6 +136,8 @@ ActiveRecord::Schema.define(version: 2022_04_17_070441) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "circle_accounts", "circles"
+  add_foreign_key "circle_accounts", "users"
   add_foreign_key "circle_days", "circles"
   add_foreign_key "circle_days", "day_of_weeks"
   add_foreign_key "circle_images", "circles"

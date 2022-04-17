@@ -18,3 +18,4 @@ end
 circle = create(:circle)
 user = create(:user)
 create(:favorite, user: user, circle: circle)
+create(:circle_account, user: user, circle: circle)
