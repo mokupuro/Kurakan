@@ -1,7 +1,9 @@
 class CirclesController < ApplicationController
+  include ApplicationHelper
   before_action :set_circle, only: %i[ show edit update destroy favorites ]
   before_action :set_day_of_weeks, only: %i[ show edit new ]
-  before_action :authenticate_admin_user!, only: [:new, :create, :destroy]
+  before_action :authenticate_admin_user!, only: %i[ new create destroy ]
+  before_action :correct_circle_account, only: %i[ edit update ]
 
   def index
     @circles = Circle.all
@@ -37,7 +39,7 @@ class CirclesController < ApplicationController
 
 
   def update
-    @circle.upload_image(params[:circle][:image])
+    @circle.upload_image(params[:circle][:image]) if params[:circle][:image].present?
     if @circle.update(circle_params)
       flash[:success] = "更新しました"
       redirect_to @circle
@@ -58,5 +60,10 @@ class CirclesController < ApplicationController
 
     def circle_params
       params.require(:circle).permit(:name, :description, :active_place, :number_of_people, :link, day_of_week_ids: [], circle_time_attributes: [:active_start_time, :active_end_time])
+    end
+
+    def correct_circle_account
+      circle = Circle.find(params[:id])
+      redirect_to(circle_url) unless current_circle_account?(current_user, circle)
     end
 end
