@@ -2,7 +2,7 @@
   <div class="w-full md:w-1/2 justify-center mx-auto">
     <div class="flex max-w-xs">
       <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 mr-1 truncate"><%= user_name_exist?(@user) %></h1>
-      <% if current_user == @user %>
+      <% if current_user?(@user) %>
         <%= link_to edit_user_path do %>
           <svg class="h-6 w-6 text-black" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z"/>
