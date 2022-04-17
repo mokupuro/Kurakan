@@ -4,7 +4,19 @@
       <%= image_tag @circle.image&.display_image, class: "w-full h-64 md:h-full max-h-96 rounded-xl object-cover object-center rounded" if @circle.image&.image&.attached? %> 
     </div>
     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-      <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @circle.name %></h1>
+      <div class="flex max-w-xs">
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @circle.name %></h1>
+        <% if current_circle_account?(current_user, @circle) %>
+          <%= link_to edit_circle_path do %>
+            <svg class="h-6 w-6 text-black" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+              <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+              <line x1="16" y1="5" x2="19" y2="8" />
+            </svg> 
+          <% end %>
+        <% end %>
+      </div>
       <div class="flex mb-4 mt-2">
         <%= render 'favorites/favorite_button', { circle: @circle } %> 
       </div>
