@@ -4,6 +4,7 @@ class CirclesController < ApplicationController
 
   def index
     @circles = Circle.all
+    @circles = @circles.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def show
