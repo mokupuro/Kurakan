@@ -1,6 +1,7 @@
 class CirclesController < ApplicationController
   before_action :set_circle, only: %i[ show edit update destroy favorites ]
   before_action :set_day_of_weeks, only: %i[ show edit new ]
+  before_action :authenticate_admin_user!, only: [:new, :create, :destroy]
 
   def index
     @circles = Circle.all
