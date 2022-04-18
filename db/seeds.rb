@@ -7,6 +7,7 @@ Image.all.destroy_all
 require "factory_bot_rails"
 include FactoryBot::Syntax::Methods
 
+CircleAccount.destroy_all
 Circle.destroy_all
 User.destroy_all
 DayOfWeek.destroy_all
