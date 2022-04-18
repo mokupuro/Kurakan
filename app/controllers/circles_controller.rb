@@ -1,9 +1,9 @@
 class CirclesController < ApplicationController
   include ApplicationHelper
-  before_action :set_circle, only: %i[ show edit update destroy favorites ]
+  before_action :set_circle, only: %i[ show edit update destroy favorites posts ]
   before_action :set_day_of_weeks, only: %i[ show edit new ]
   before_action :authenticate_admin_user!, only: %i[ new create destroy ]
-  before_action :correct_circle_account, only: %i[ edit update ]
+  before_action :correct_circle_account, only: %i[ edit update posts ]
 
   def index
     @circles = Circle.paginate(page: params[:page], per_page: 15)
@@ -23,6 +23,10 @@ class CirclesController < ApplicationController
 
   def favorites
     @favorites = @circle.favorites
+  end
+
+  def posts
+    @posts = @circle.circle_account.circle_posts.paginate(page: params[:page], per_page: 15)
   end
 
   def create
