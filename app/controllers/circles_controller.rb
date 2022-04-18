@@ -1,5 +1,5 @@
 class CirclesController < ApplicationController
-  before_action :set_circle, only: %i[ show edit update destroy ]
+  before_action :set_circle, only: %i[ show edit update destroy favorites ]
   before_action :set_day_of_weeks, only: %i[ show edit new ]
 
   def index
@@ -15,6 +15,10 @@ class CirclesController < ApplicationController
   end
 
   def edit
+  end
+
+  def favorites
+    @favorites = @circle.favorites
   end
 
   def create

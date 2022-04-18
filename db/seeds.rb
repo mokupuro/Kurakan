@@ -14,5 +14,6 @@ User.destroy_all
   DayOfWeek.create!(day_name: day_of_week)
 end
 
-create(:circle)
-create(:user)
+circle = create(:circle)
+user = create(:user)
+create(:favorite, user: user, circle: circle)
