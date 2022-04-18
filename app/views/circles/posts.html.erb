@@ -1,0 +1,14 @@
+<section class="container text-gray-600 body-font">
+  <div class="w-full mx-auto flex flex-col flex-wrap items-center justify-center">
+    <% if @circle.circle_account&.circle_posts.any? %>
+        <% @posts.each do |post|%>
+          <%= render 'circle_posts/circle_post', { circle_post: post } %>
+        <% end %>
+      <div class="mx-auto text-center my-4">
+        <%= will_paginate @posts %>
+      </div>
+    <% else %>
+      <div class="text-xl">投稿はありません</div>
+    <% end %>
+  </div>
+</section>

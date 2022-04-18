@@ -1,0 +1,16 @@
+<section class="container text-gray-600 body-font overflow-hidden">
+  <div class="mx-auto flex flex-col flex-wrap items-center justify-center gap-3">
+    <div class="w-full md:w-1/2 text-center bg-white p-4 rounded-2xl border">
+      <%= link_to "投稿作成", new_circle_post_path, { class: "text-gray-900 text-lg title-font font-medium truncate mx-2" } %>
+    </div>
+    <div class="w-full md:w-1/2 text-center bg-white p-4 rounded-2xl border">
+      <%= link_to "投稿一覧", "circles/#{@circle_account.circle.id}/posts", { class: "text-gray-900 text-lg title-font font-medium truncate mx-2" } %>
+    </div>
+    <div class="w-full md:w-1/2 text-center bg-white p-4 rounded-2xl border">
+      <%= link_to "サークル情報", circle_path(@circle_account.circle), { class: "text-gray-900 text-lg title-font font-medium truncate mx-2" } %>
+    </div>
+    <div class="w-full md:w-1/2 text-center bg-white p-4 rounded-2xl border">
+      <%= link_to "いいね一覧", circle_favorites_path(@circle_account.circle), { class: "text-gray-900 text-lg title-font font-medium truncate mx-2" } %>
+    </div>
+  </div>
+</section>

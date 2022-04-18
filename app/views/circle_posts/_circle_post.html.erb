@@ -7,6 +7,9 @@
       </div>
       <p class="leading-relaxed mb-5 break-words"><%= circle_post.content %></p>
       <%= image_tag circle_post.image&.display_image, class: "w-full h-52 sm:h-full max-h-80 object-cover object-center rounded-2xl" if circle_post.image&.image&.attached? %> 
+      <% if current_user?(circle_post.circle_account.user) %>
+        <%= link_to "delete", circle_post, method: :delete, class: "text-blue-600", data: { confirm: "ほんとに？" } %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -16,4 +16,8 @@ class Circle < ApplicationRecord
   def upload_image(image)
     build_circle_image.build_image.image.attach(image)
   end
+
+  def circle_account?(user)
+    user && user.circle_account  = circle_account
+  end
 end
