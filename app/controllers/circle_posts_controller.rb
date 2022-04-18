@@ -3,7 +3,7 @@ class CirclePostsController < ApplicationController
   before_action :correct_circle_account, only: :destroy
 
   def index
-    @circle_posts = CirclePost.all
+    @circle_posts = CirclePost.paginate(page: params[:page], per_page: 15)
   end
 
   def new

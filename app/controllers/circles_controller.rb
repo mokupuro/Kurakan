@@ -6,7 +6,7 @@ class CirclesController < ApplicationController
   before_action :correct_circle_account, only: %i[ edit update ]
 
   def index
-    @circles = Circle.all
+    @circles = Circle.paginate(page: params[:page], per_page: 15)
     @circles = @circles.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
