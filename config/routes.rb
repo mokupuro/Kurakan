@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#index'
 
+  resources :circles do
+    resources :favorites, only: [:create, :destroy]
+  end
+
   resources :circles
   resources :users
 

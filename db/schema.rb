@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_13_203231) do
+ActiveRecord::Schema.define(version: 2022_04_15_082418) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -83,6 +83,16 @@ ActiveRecord::Schema.define(version: 2022_04_13_203231) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "favorites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "circle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["circle_id"], name: "index_favorites_on_circle_id"
+    t.index ["user_id", "circle_id"], name: "index_favorites_on_user_id_and_circle_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -110,4 +120,6 @@ ActiveRecord::Schema.define(version: 2022_04_13_203231) do
   add_foreign_key "circle_images", "circles"
   add_foreign_key "circle_images", "images"
   add_foreign_key "circle_times", "circles"
+  add_foreign_key "favorites", "circles"
+  add_foreign_key "favorites", "users"
 end
