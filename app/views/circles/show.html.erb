@@ -6,7 +6,7 @@
     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
       <div class="flex max-w-xs">
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @circle.name %></h1>
-        <% if current_circle_account?(current_user, @circle) %>
+        <% if @circle.circle_account?(current_user) %>
           <%= link_to edit_circle_path do %>
             <svg class="h-6 w-6 text-black" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z"/>

@@ -64,6 +64,6 @@ class CirclesController < ApplicationController
 
     def correct_circle_account
       circle = Circle.find(params[:id])
-      redirect_to(circle_url) unless current_circle_account?(current_user, circle)
+      redirect_to(circle_url) unless circle.circle_account?(current_user)
     end
 end
