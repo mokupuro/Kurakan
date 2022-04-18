@@ -8,8 +8,8 @@ FactoryBot.define do
 
     after(:build) do |circle|
       circle.circle_time || build(:circle_time, circle: circle)
-      (1..7).each do |n| 
-        day_of_week = DayOfWeek.find(n)
+      %w[月 火 水 木 金 土 日].each do |n| 
+        day_of_week = DayOfWeek.find_by(day_name: n)
         circle.circle_days << build(:circle_day, circle: circle, day_of_week: day_of_week)
       end
       image = create(:image)
