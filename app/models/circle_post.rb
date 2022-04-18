@@ -5,4 +5,8 @@ class CirclePost < ApplicationRecord
 
   validates :circle_account_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
+
+  def upload_image(image)
+    build_circle_post_image.build_image.image.attach(image)
+  end
 end
