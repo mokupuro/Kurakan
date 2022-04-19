@@ -12,6 +12,7 @@ FactoryBot.define do
         day_of_week = DayOfWeek.find_by(day_name: n)
         circle.circle_days << build(:circle_day, circle: circle, day_of_week: day_of_week)
       end
+      # circle.circle_categories << Category.first
       image = create(:image)
       circle.circle_image || build(:circle_image, circle: circle, image: image)
     end

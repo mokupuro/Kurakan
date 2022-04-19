@@ -53,6 +53,16 @@
       </div>
 
       <div class="field">
+        <%= f.label :category_ids, "カテゴリー", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.collection_check_boxes :category_ids, @categories, :id, :name, include_hidden: false do |category| %>
+          <%= category.label do %>
+            <%= category.check_box %>
+            <%= category.text %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="field">
         <%= f.label :image, "画像", { class: 'leading-7 text-sm text-gray-600' } %><br />
         <%= f.file_field :image %>
       </div>

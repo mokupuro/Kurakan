@@ -2,12 +2,14 @@ class CirclesController < ApplicationController
   include ApplicationHelper
   before_action :set_circle, only: %i[ show edit update destroy favorites posts ]
   before_action :set_day_of_weeks, only: %i[ show edit new ]
+  before_action :set_categories, only: %i[ index edit new ]
   before_action :authenticate_admin_user!, only: %i[ new create destroy ]
   before_action :correct_circle_account, only: %i[ edit update posts ]
 
   def index
     @circles = Circle.paginate(page: params[:page], per_page: 15)
     @circles = @circles.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @circles = @categories.find(params[:category_id]).circles.paginate(page: params[:page], per_page: 15) if params[:category_id].present?
   end
 
   def show
@@ -62,8 +64,12 @@ class CirclesController < ApplicationController
       @day_of_weeks = DayOfWeek.all
     end
 
+    def set_categories
+      @categories = Category.all
+    end
+
     def circle_params
-      params.require(:circle).permit(:name, :description, :active_place, :number_of_people, :link, day_of_week_ids: [], circle_time_attributes: [:active_start_time, :active_end_time])
+      params.require(:circle).permit(:name, :description, :active_place, :number_of_people, :link, day_of_week_ids: [], circle_time_attributes: [:active_start_time, :active_end_time], category_ids: [])
     end
 
     def correct_circle_account

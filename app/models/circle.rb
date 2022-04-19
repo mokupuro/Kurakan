@@ -8,6 +8,8 @@ class Circle < ApplicationRecord
   has_many :circle_days, dependent: :destroy
   has_many :day_of_weeks, through: :circle_days
   has_many :favorites, dependent: :destroy
+  has_many :circle_categories, dependent: :destroy
+  has_many :categories, through: :circle_categories
 
   def favorited?(user)
     favorites.where(user: user).exists?
