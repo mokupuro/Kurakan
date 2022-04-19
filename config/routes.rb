@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'pages#index'
+  root 'circles#index'
   get  '/circle_account' => 'pages#circle_account'
   get "circles/:id/favorites" => "circles#favorites"
   get "circles/:id/posts" => "circles#posts"
