@@ -7,7 +7,9 @@ class CirclesController < ApplicationController
 
   def index
     @circles = Circle.paginate(page: params[:page], per_page: 15)
+    @categories = Category.all
     @circles = @circles.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @circles = @categories.find(params[:category_id]).circles.paginate(page: params[:page], per_page: 15) if params[:category_id].present?
   end
 
   def show
@@ -63,7 +65,7 @@ class CirclesController < ApplicationController
     end
 
     def circle_params
-      params.require(:circle).permit(:name, :description, :active_place, :number_of_people, :link, day_of_week_ids: [], circle_time_attributes: [:active_start_time, :active_end_time])
+      params.require(:circle).permit(:name, :description, :active_place, :number_of_people, :link, day_of_week_ids: [], circle_time_attributes: [:active_start_time, :active_end_time], category_ids: [])
     end
 
     def correct_circle_account
