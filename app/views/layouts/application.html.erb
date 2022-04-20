@@ -5,11 +5,12 @@
     <%= render "layouts/rails_default" %>
   </head>
 
-  <body>
+  <body class="h-screen flex flex-col justify-between">
     <%= render "layouts/header" %>
-    <main class="container mx-auto px-5 py-10 md:py-24 flex flex-col items-center justify-center">
+    <main class="flex-grow container mx-auto px-5 py-10 md:py-24 flex flex-col items-center justify-center">
       <%= render "shared/flash" %> 
       <%= yield %>
     </main>
+    <%= render "layouts/footer" %>
   </body>
 </html>
