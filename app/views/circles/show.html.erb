@@ -20,7 +20,7 @@
       <div class="flex mb-4 mt-2">
         <%= render 'favorites/favorite_button', { circle: @circle } %> 
       </div>
-      <p class="leading-relaxed mb-5"><%= @circle.description %></p>
+      <p class="leading-relaxed mb-5 break-words"><%= @circle.description %></p>
       <div class="flex border-t border-gray-200 py-2">
         <span class="text-gray-500">活動場所</span>
         <span class="ml-auto text-gray-900"><%= @circle.active_place %></span>
