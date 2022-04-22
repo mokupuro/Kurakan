@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .pagination {
-  @apply flex justify-center;
+  @apply flex justify-center flex-wrap;
   @apply my-2 py-2;
 }
 .pagination * {
