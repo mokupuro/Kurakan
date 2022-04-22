@@ -22,8 +22,3 @@ Category.create(name: '準強化クラブ')
 Category.create(name: '部')
 Category.create(name: '同好会')
 Category.create(name: '愛好会')
-
-circle = create(:circle)
-user = create(:user)
-create(:favorite, user: user, circle: circle)
-create(:circle_account, user: user, circle: circle)
