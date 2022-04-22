@@ -52,3 +52,10 @@ docker compose logs -f web
 ```
 docker compose exec web bundle exec rspec ./spec
 ```
+
+# Herokuデプロイ
+```
+heroku container:push --recursive -a [herokuアプリ名]
+
+heroku container:release web -a [herokuアプリ名]
+```
