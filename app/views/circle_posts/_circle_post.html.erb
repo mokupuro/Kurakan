@@ -1,0 +1,15 @@
+<div class="w-full lg:w-1/2 p-2 border-b-2">
+  <div class="bg-white rounded-2xl  flex flex-col gap-5">
+    <div class="flex flex-col gap-3">
+      <div class="flex flex-row items-center gap-3">
+        <p class="text-gray-900 text-lg font-medium mb-1 truncate"><%= link_to circle_post.circle_account.circle.name, circle_post.circle_account.circle %></p>
+        <%= display_created_at(circle_post.created_at) %>
+      </div>
+      <p class="leading-relaxed mb-5 break-words"><%= circle_post.content %></p>
+      <%= image_tag circle_post.image&.display_image, class: "w-full h-52 sm:h-full max-h-80 object-cover object-center rounded-2xl" if circle_post.image&.image&.attached? %> 
+      <% if current_user?(circle_post.circle_account.user) %>
+        <%= link_to "delete", circle_post, method: :delete, class: "text-blue-600", data: { confirm: "ほんとに？" } %>
+      <% end %>
+    </div>
+  </div>
+</div>

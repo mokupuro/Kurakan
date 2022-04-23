@@ -1,0 +1,7 @@
+<li id="favorites-<%= favorite.id %>">
+  <%= link_to user_path(favorite.user) do %>
+    <div class="bg-white p-4 rounded-2xl border flex flex-row items-center justify-start">
+      <%= link_to user_name_exist?(favorite.user), favorite.user, { class: "text-gray-900 text-lg title-font font-medium truncate mx-2" } %>
+    </div>
+  <% end %>
+</li>

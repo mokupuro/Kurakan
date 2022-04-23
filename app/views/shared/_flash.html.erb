@@ -1,0 +1,17 @@
+<% flash.each do |key, value| %>
+  <div class="<%= flash_class(key) %> border-t-4 rounded-b px-4 py-3 shadow-md flex mb-2 items-center" role="alert">
+    <%= flash_status(key) %>
+    <p class="text-sm"><%= value %></p>
+    <button type="button" onclick="closeAlert(event)">&times;</button>
+  </div>
+  <script>
+    function closeAlert(event){
+      let element = event.target;
+      while(element.nodeName !== "BUTTON"){
+        element = element.parentNode;
+      }
+      element.parentNode.parentNode.removeChild(element.parentNode);
+    }
+  </script>
+<% end %>
+

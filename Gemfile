@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.4'
+ruby '2.7.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
@@ -27,6 +27,15 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'tailwindcss-rails'
+gem 'active_storage_validations'
+gem 'image_processing'
+gem 'mini_magick' 
+gem 'devise'
+gem 'dotenv-rails'
+gem 'rails_admin'
+gem 'will_paginate'
+gem "google-cloud-storage"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -36,6 +45,7 @@ group :development, :test do
   gem "bullet"
   gem 'rails-controller-testing'
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do

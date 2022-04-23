@@ -1,0 +1,75 @@
+<section class="container text-gray-600 body-font overflow-hidden">
+  <div class="w-full mt-6 lg:mt-0 lg:pl-10 lg:py-6">
+    <h2 class="text-gray-900 text-lg font-medium title-font">サークル編集</h2>
+
+    <%= form_with(model: @circle, local: true, class: 'flex flex-col md:ml-auto w-full mt-10 md:mt-0 space-y-4') do |f| %>
+      <div class="field">
+        <%= f.label :name, "サークル名", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "サークル名", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :description, "サークル詳細", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.text_area :description, autocomplete: "サークル詳細", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :active_place, "活動場所", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.text_field :active_place, autocomplete: "活動場所", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+
+      <%= f.fields_for :circle_time, @circle.circle_time do |cf| %>
+        <div class="flex space-x-4" >
+          <div class="field w-full">
+            <%= cf.label :active_start_time, "活動時間（始まり）", { class: 'leading-7 text-sm text-gray-600' } %><br />
+            <%= cf.time_field :active_start_time, autocomplete: "off", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+          </div>
+
+          <div class="field w-full">
+            <%= cf.label :active_end_time, "活動時間（終わり）", { class: 'leading-7 text-sm text-gray-600' } %><br />
+            <%= cf.time_field :active_end_time, autocomplete: "off", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :day_of_week_ids, "活動日", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.collection_check_boxes :day_of_week_ids, @day_of_weeks, :id, :day_name, include_hidden: false do |day_of_week| %>
+          <%= day_of_week.label do %>
+            <%= day_of_week.check_box %>
+            <%= day_of_week.text %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :number_of_people, "人数", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.number_field :number_of_people, autocomplete: "1", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :link, "リンク", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.text_field :link, autocomplete: "リンク", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :category_ids, "カテゴリー", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.collection_check_boxes :category_ids, @categories, :id, :name, include_hidden: false do |category| %>
+          <%= category.label do %>
+            <%= category.check_box %>
+            <%= category.text %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :image, "画像", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "更新", { class: 'w-full text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' } %>
+      </div>
+    <% end %>
+  </div>
+</section>

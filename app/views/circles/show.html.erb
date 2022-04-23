@@ -1,0 +1,50 @@
+<section class="container text-gray-600 body-font overflow-hidden">
+  <div class="mx-auto flex flex-wrap items-center">
+    <div class="lg:w-1/2 w-full h-64 lg:h-full rounded-xl <%= 'lg:h-96 bg-gray-200 animate-pulse' if !@circle.image&.image&.attached? %>">
+      <%= image_tag @circle.image&.display_image, class: "w-full h-64 md:h-full max-h-96 rounded-xl object-cover object-center rounded" if @circle.image&.image&.attached? %> 
+    </div>
+    <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+      <div class="flex max-w-xs">
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"><%= @circle.name %></h1>
+        <% if @circle.circle_account?(current_user) %>
+          <%= link_to edit_circle_path do %>
+            <svg class="h-6 w-6 text-black" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+              <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+              <line x1="16" y1="5" x2="19" y2="8" />
+            </svg> 
+          <% end %>
+        <% end %>
+      </div>
+      <div class="flex mb-4 mt-2">
+        <%= render 'favorites/favorite_button', { circle: @circle } %> 
+      </div>
+      <p class="leading-relaxed mb-5"><%= @circle.description %></p>
+      <div class="flex border-t border-gray-200 py-2">
+        <span class="text-gray-500">活動場所</span>
+        <span class="ml-auto text-gray-900"><%= @circle.active_place %></span>
+      </div>
+      <div class="flex border-t border-gray-200 py-2 justify-between">
+        <span class="text-gray-500">活動日</span>
+        <div>
+          <% @day_of_weeks.each_with_index do |day_of_week, i| %>
+            <span class="ml-1 text-gray-900 <%= 'py-1.5 px-2 rounded-full bg-blue-200 items-center justify-center' if @circle.day_of_weeks&.include?(day_of_week) %>"><%= day_of_week.day_name %></span>
+          <% end %>
+        </div>
+      </div>
+      <div class="flex border-t border-gray-200 py-2">
+        <span class="text-gray-500">活動時間</span>
+        <span class="ml-auto text-gray-900"><%= display_time(@circle.circle_time&.active_start_time) %> ~ <%= display_time(@circle.circle_time&.active_end_time) %></span>
+      </div>
+      <div class="flex border-t border-gray-200 py-2">
+        <span class="text-gray-500">人数</span>
+        <span class="ml-auto text-gray-900"><%= @circle.number_of_people %>人</span>
+      </div>
+      <div class="flex border-t border-b mb-6 border-gray-200 py-2">
+        <span class="text-gray-500">リンク</span>
+        <span class="ml-auto text-gray-900"><%= @circle.link %></span>
+      </div>
+    </div>
+  </div>
+</section>

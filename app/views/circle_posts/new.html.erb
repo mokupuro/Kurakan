@@ -1,0 +1,21 @@
+<section class="container text-gray-600 body-font overflow-hidden">
+  <div class="w-full mt-6 lg:mt-0 lg:pl-10 lg:py-6">
+    <h2 class="text-gray-900 text-lg font-medium title-font">投稿作成</h2>
+
+    <%= form_with(model: @circle_post, local: true, class: 'flex flex-col md:ml-auto w-full space-y-4') do |f| %>
+      <div class="field">
+        <%= f.label :content, "投稿内容", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.text_area :content, autocomplete: "投稿内容", class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :image, "画像", { class: 'leading-7 text-sm text-gray-600' } %><br />
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "投稿", { class: 'w-full text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' } %>
+      </div>
+    <% end %>
+  </div>
+</section>
