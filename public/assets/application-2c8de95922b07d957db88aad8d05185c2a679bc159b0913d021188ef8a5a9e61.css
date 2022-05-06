@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pagination {
+  @apply flex justify-center flex-wrap;
+  @apply my-2 py-2;
+}
+.pagination * {
+  @apply px-3 py-2 mx-2;
+  @apply text-gray-700 no-underline bg-white rounded-lg;
+}
+.pagination > em {
+  @apply text-blue-400;
+}
+.pagination a:hover {
+  @apply font-semibold text-gray-200 bg-gray-400;
+}
+
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
