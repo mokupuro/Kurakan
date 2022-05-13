@@ -29,3 +29,6 @@ test:
 
 migrate:
 	$(DOCKER_COMPOSE_EXEC) web rails db:migrate
+
+precompile:
+  $(DOCKER_COMPOSE_EXEC) web rails assets/precompile
