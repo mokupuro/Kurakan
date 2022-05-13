@@ -16,3 +16,8 @@ yarn-debug.log*
 !/storage/.keep
 .byebug_history
 /config/master.key
+
+# Ignore precompiled javascript packs
+/public/packs
+/public/packs-test
+/public/assets
